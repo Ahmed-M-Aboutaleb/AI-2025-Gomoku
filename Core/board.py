@@ -1,5 +1,5 @@
+from Util.constants import DRAW_VALUE
 class Board:
-    __DRAW_VALUE = 0
     def __init__(self, size=15):
         self.size = size
         self.board = [[0] * size for _ in range(size)]
@@ -23,7 +23,7 @@ class Board:
                     if i + 4 < self.size and j - 4 >= 0 and all(self.board[i + k][j - k] == self.board[i][j] for k in range(5)):
                         return self.board[i][j]
         if self.is_full():
-            return self.__DRAW_VALUE
+            return DRAW_VALUE
         return None 
     def is_full(self):
         return all(self.board[i][j] != 0 for i in range(self.size) for j in range(self.size))
