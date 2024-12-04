@@ -1,5 +1,8 @@
 class AI:
     """AI for playing Gomoku using Minimax and Alpha-Beta Pruning."""
+    def __init__(self, difficulty="medium"):
+        self.difficulty_levels = {"easy": 2, "medium": 4, "hard": 6}
+        self.depth = self.difficulty_levels.get(difficulty, 4)
     def heuristic(self):
         """
         Evaluate the board state.

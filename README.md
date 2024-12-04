@@ -31,6 +31,7 @@ Install AI-2025-Gomoku with git
 ## Authors
 
 - [@Ahmed Aboutaleb](https://github.com/Ahmed-M-Aboutaleb)
+- [@Asem Hamed](https://github.com/Asemhamed)
 
 
 ## Contributing
