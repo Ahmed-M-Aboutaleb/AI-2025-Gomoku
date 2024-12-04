@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Util.constants import DRAW_VALUE
 class Board:
     def __init__(self, size=15):

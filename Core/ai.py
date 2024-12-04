@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Util.constants import HUMAN_PLAYER_VALUE, AI_PLAYER_VALUE
 
 class AI:
@@ -43,8 +46,8 @@ class AI:
                 if beta <= alpha:
                     break
             return min_eval, best_move
-    def get_best_move(self, depth):
-        best_move = self.minimax(self.depth, float("-inf"), float("inf"), True)
+    def get_best_move(self, board):
+        best_move = self.minimax(board, self.depth, True, float("-inf"), float("inf"))
         return best_move
     def get_valid_moves(self, board):
         return [(x, y) for x in range(board.size) for y in range(board.size) if board.board[x][y] == 0]

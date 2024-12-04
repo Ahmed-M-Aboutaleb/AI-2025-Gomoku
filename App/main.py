@@ -1,4 +1,8 @@
 import tkinter as tk
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from Core.game import Game
 from Util.constants import HUMAN_PLAYER_VALUE, AI_PLAYER_VALUE, SYMBOL_X, SYMBOL_O
 
@@ -20,7 +24,7 @@ class GomokuApp:
             self.board_buttons.append(row_buttons)
 
     def on_move(self, row, col):
-        if self.game.board.play_turn(row, col):
+        if self.game.play_turn(row, col):
             self.update_ui()
     
     def update_ui(self):
