@@ -26,7 +26,9 @@ class GomokuApp:
     def on_move(self, row, col):
         if self.game.play_turn(row, col):
             self.update_ui()
-    
+        if self.game.current_player == AI_PLAYER_VALUE:
+            self.root.after(500, self.update_ui)
+
     def update_ui(self):
         for i in range(self.game.board.size):
             for j in range(self.game.board.size):
