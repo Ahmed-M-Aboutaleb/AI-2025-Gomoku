@@ -5,7 +5,7 @@ from Util.constants import DRAW_VALUE
 
 class Board:
     def __init__(self, size=15):
-        self.size = size
+        self.size = int(size)
         self.board = [[0] * size for _ in range(size)]
 
     def is_valid_move(self, x, y):
