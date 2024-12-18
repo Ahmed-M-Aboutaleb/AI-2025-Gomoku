@@ -5,7 +5,7 @@ from Core.board import Board
 from Util.constants import HUMAN_PLAYER_VALUE, AI_PLAYER_VALUE
 
 class Game:
-    def __init__(self, board_size=15, ai_difficulty="hard"):
+    def __init__(self, board_size=15, ai_difficulty="medium"):
         self.board = Board(size=board_size)
         self.current_player = HUMAN_PLAYER_VALUE
         self.ai_difficulty = ai_difficulty

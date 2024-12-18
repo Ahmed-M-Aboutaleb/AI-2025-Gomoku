@@ -7,6 +7,7 @@ class AI:
     def __init__(self, difficulty="medium"):
         self.difficulty_levels = {"easy": 2, "medium": 4, "hard": 6}
         self.depth = self.difficulty_levels.get(difficulty, 4)
+        self.valid_moves_cache = {}
 
     def heuristic1(self, board):
         ai_score = sum(row.count(AI_PLAYER_VALUE) for row in board.board)
@@ -85,6 +86,11 @@ class AI:
         return best_move
 
     def get_valid_moves(self, board):
+        board_key = tuple(tuple(row) for row in board.board)
+
+        if board_key in self.valid_moves_cache:
+            return self.valid_moves_cache[board_key]
+
         moves = set()
         directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
         for x in range(board.size):
@@ -95,5 +101,12 @@ class AI:
                             nx, ny = x + dx * step, y + dy * step
                             if 0 <= nx < board.size and 0 <= ny < board.size and board.board[nx][ny] == 0:
                                 moves.add((nx, ny))
-        return list(moves)
+
+        self.valid_moves_cache[board_key] = list(moves)
+        return self.valid_moves_cache[board_key]
+
+    def invalidate_cache(self, board):
+        board_key = tuple(tuple(row) for row in board.board)
+        if board_key in self.valid_moves_cache:
+            del self.valid_moves_cache[board_key]
 
